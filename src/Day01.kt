@@ -1,49 +1,40 @@
 fun main() {
     fun part1(input: List<String>): Int {
         return input.sumOf { line ->
-            val first = line.first { it.isDigit() }.digitToInt()
-            val last = line.last { it.isDigit() }.digitToInt()
-            first * 10 + last
+            "${line.first { it.isDigit() }}${line.last { it.isDigit() }}".toInt()
         }
     }
 
     fun part2(input: List<String>): Int {
         val words = mapOf(
-            "one" to 1,
-            "two" to 2,
-            "three" to 3,
-            "four" to 4,
-            "five" to 5,
-            "six" to 6,
-            "seven" to 7,
-            "eight" to 8,
-            "nine" to 9,
+            "one" to '1',
+            "two" to '2',
+            "three" to '3',
+            "four" to '4',
+            "five" to '5',
+            "six" to '6',
+            "seven" to '7',
+            "eight" to '8',
+            "nine" to '9',
+            "1" to '1',
+            "2" to '2',
+            "3" to '3',
+            "4" to '4',
+            "5" to '5',
+            "6" to '6',
+            "7" to '7',
+            "8" to '8',
+            "9" to '9',
         )
 
-        fun firstWord(line: String): Pair<Int, Int>? =
-            line.findAnyOf(words.keys)?.let { it.first to words[it.second]!! }
+        fun firstWord(line: String): Char =
+            line.findAnyOf(words.keys)!!.let { words[it.second]!! }
 
-        fun lastWord(line: String): Pair<Int, Int>? =
-            line.findLastAnyOf(words.keys)?.let { it.first to words[it.second]!! }
+        fun lastWord(line: String): Char =
+            line.findLastAnyOf(words.keys)!!.let { words[it.second]!! }
 
         return input.sumOf { line ->
-            val firstDigit = line.withIndex().first { it.value.isDigit() }
-            val lastDigit = line.withIndex().last { it.value.isDigit() }
-
-            val firstWord = firstWord(line)
-            val lastWord = lastWord(line)
-
-            val firstValue = if (firstDigit.index < (firstWord?.first ?: Int.MAX_VALUE))
-                firstDigit.value.digitToInt()
-            else
-                firstWord!!.second
-
-            val lastValue = if (lastDigit.index > (lastWord?.first ?: Int.MIN_VALUE))
-                lastDigit.value.digitToInt()
-            else
-                lastWord!!.second
-
-            firstValue * 10 + lastValue
+            "${firstWord(line)}${lastWord(line)}".toInt()
         }
     }
 
