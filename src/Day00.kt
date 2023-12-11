@@ -14,9 +14,9 @@ fun main() {
     val part1result = part1(testInput1)
     check(part1result == 8) { "Got $part1result" }
 
-    val testInput2 = readInput("Day${day}_2_test")
-    val part2result = part2(testInput2)
-    check(part2result == 2286) { "Got $part2result" }
+//    val testInput2 = readInput("Day${day}_2_test")
+//    val part2result = part2(testInput2)
+//    check(part2result == 2286) { "Got $part2result" }
 
     val input = readInput("Day${day}")
     part1(input).println()
