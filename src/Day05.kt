@@ -71,7 +71,7 @@ fun main() {
 
         return runBlocking {
             seedBegins.zip(seedLengths).asFlow()
-                .flamap { (s, l) ->
+                .flatMapMerge(24) { (s, l) ->
                     generateSequence(s) { t ->
                         val ppp = (t - s).toDouble() / l * 100
                         System.out.format("$s $t $l: %.2f\n", ppp)
