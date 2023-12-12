@@ -2,6 +2,10 @@ plugins {
     kotlin("jvm") version "1.9.20"
 }
 
+dependencies {
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+}
+
 sourceSets {
     main {
         kotlin.srcDir("src")
