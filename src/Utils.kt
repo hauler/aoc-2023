@@ -25,3 +25,13 @@ fun firstWord(line: String, wordMap: Map<String, String>): String =
 
 fun lastWord(line: String, wordMap: Map<String, String>): String =
     line.findLastAnyOf(wordMap.keys)!!.let { wordMap[it.second]!! }
+
+fun transpose(input: List<String>): List<String> {
+    val result = Array(input[0].length) { "" }
+
+    input.forEach { line ->
+        line.forEachIndexed { index, c -> result[index] = result[index] + c }
+    }
+
+    return result.asList()
+}
