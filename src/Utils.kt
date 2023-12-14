@@ -35,3 +35,7 @@ fun transpose(input: List<String>): List<String> {
 
     return result.asList()
 }
+
+fun printInput(input: List<String>) {
+    input.forEach { println(it) }
+}
